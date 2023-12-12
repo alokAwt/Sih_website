@@ -5,10 +5,7 @@ export default function DepartmentLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
   
-    const handleLogin = () => {
-      // Add your login logic here (e.g., validate credentials, authenticate user)
-      console.log('Logging in with:', username, password);
-    };
+   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-800 to-violet-500">
     <div className="max-w-md w-full p-6 bg-white shadow-md rounded-md">
@@ -48,10 +45,12 @@ export default function DepartmentLogin() {
         <button
           type="button"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
-          onClick={handleLogin}
+        
         >
           Login
-        </button></Link>
+        </button>
+        </Link>
+        
         
       </form>
     </div>

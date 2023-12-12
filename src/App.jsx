@@ -4,12 +4,17 @@ import Header from './Components/Header'
 import Register from './Pages/Register'
 import Home from './Pages/Home'
 import Student from './Pages/Student'
-import StudentLogin from './Pages/StudentLogin'
+
 import DepartmentLogin from './Pages/DepartmentLogin'
 import Admin from './Pages/Admin'
 import StudentDashBoard from './Pages/StudentDashBoard'
 import Scholarship from './Pages/Scholarship'
+
+import Otp from './Pages/Otp'
+import University from './Pages/University'
 import LoginWithDigi from './Pages/LoginWithDigi'
+import Loginopt from './Pages/Loginopt'
+
 
 
 
@@ -27,12 +32,17 @@ export default function App() {
       <Route path='/student' element={<Student/>}/>
       <Route path="/register" element={<Register />}></Route>
       <Route path='/DepartmentLogin' element={<DepartmentLogin />}/>
-      <Route path="/Studentlogin" element={<StudentLogin />}></Route>
+    
       <Route path='/admin' element={<Admin/>}/>
       <Route path='/studentdashboard' element={<StudentDashBoard/>}/>
-      <Route path='/scholarship' element={<Scholarship/>}></Route>
-      <Route path='/loginwithdigi' element={<LoginWithDigi/>} />
       
+      <Route path='/scholarship' element={<Scholarship/>}></Route>
+      
+      <Route path='/otp' element={<Otp/>}/>
+      <Route path='/university' element={<University/>}/>
+      <Route path='/LoginWithDigi' element={<LoginWithDigi/>}/>
+      <Route path='/Loginopt' element={<Loginopt />}/>
+              
 
     </Routes>
      

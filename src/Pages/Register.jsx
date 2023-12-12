@@ -32,12 +32,18 @@ export default function Register() {
               className="max-w-sm w-full lg:max-w-xs  hover:bg-gradient-to-r from-indigo-800 to-violet-500 text-black-200 font-semibold hover:text-white py-2 px-4 border border-purple-500 hover:border-transparent 
       shadow-md rounded-md overflow-hidden hover:translate-y-2.5"
             >
+              <Link to={"/University"}>
               <div className="px-10 py-8">
+                
                 <div className="font-bold text-xl mb-2 text-center">
                 <FaUniversity size={50} color="green" className="ml-12"/>
                   University Login
                 </div>
               </div>
+              </Link>
+              
+              
+            
             </div>
 
             {/* Card 3 */}
