@@ -16,6 +16,7 @@ import LoginWithDigi from "./Pages/LoginWithDigi";
 import Loginopt from "./Pages/Loginopt";
 import College from "./Pages/College";
 import StudentList from "./Pages/StudentList";
+import Detail from "./Pages/Detail";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
 
           <Route path="/College" element={<College />} />
           <Route path="/Loginopt" element={<Loginopt />} />
+          <Route path="/Detail" element={<Detail/>}></Route>
           <Route path="/StudentList" element={<StudentList/>}/>
         </Routes>
       </BrowserRouter>

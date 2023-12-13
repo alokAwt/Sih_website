@@ -6,12 +6,16 @@ import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import Footer from "../Components/Footer";
 import slider5 from "../assets/slider5.jpg";
+import Marquee from "../Components/Marque";
+
 
 SwiperCore.use([Navigation, Autoplay]);
 export default function Home() {
   //cards for info
 
   const Card = ({ image, title, description }) => {
+    
+
     return (
       <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4  justify-center transition-transform transform-gpu hover:scale-110 ">
         <div
@@ -25,14 +29,7 @@ export default function Home() {
       </div>
     );
   };
-  const Notice = ({ title, content }) => {
-    return (
-      <div className="bg-gray-200 p-1 rounded-md mb-4">
-        <h2 className="text-lg font-semibold mb-2">{title}</h2>
-        <p>{content}</p>
-      </div>
-    );
-  };
+  
 
   const cardsData = [
     {
@@ -191,7 +188,7 @@ export default function Home() {
       </div>
 
      
-      <div className="grid grid-cols-2 gap-2 mt-5 mb-5" id="div1">
+      <div className="grid grid-cols-2 gap-3 mt-5 mb-5" id="div1">
         <div className="container ml-5 col-md-12 col-lg-6 border-double border-2 border-sky-500 ">
           <div className="row">
             <div className="col-md-12 text-center"></div>
@@ -215,10 +212,8 @@ export default function Home() {
                       document.getElementById("notification-links").start()
                     }
                   >
-                    <h4>
-                      The list of institutes approved for the reimbursement of
-                      patent filing fee (Rs.1600/application) and examination
-                      fee (Rs.4000/application) in phase 1 of KAPILA scheme.
+                    <h4 className="text-red-500">
+                    Those applicants who were not selected in the merit list during previous years can apply as fresh applicant during AY 2023-24 provided it is allowed as per scheme guidelines.    Seed bank A/C with Aadhaar
                     </h4>
                   </a>
 
@@ -231,11 +226,13 @@ export default function Home() {
                       document.getElementById("notification-links").start()
                     }
                   >
-                    <h4>
-                      <strong>IPR Lecture Series</strong>
+                    <h4 className="text-red-500">
+                      <strong>  Students are advised to</strong>
                       <br />
-                      IP lecture series is now available for all students and
-                      faculty members from KAPILA registered Institutions.
+                      1.    Keep Aadhaar ready
+                          2.    Link mobile no. with Aadhaar
+                         3.    Seed bank A/C with Aadhaar
+                         4.AdharCardNumber Linked With
                     </h4>
                   </a>
                 </marquee>
@@ -331,13 +328,15 @@ export default function Home() {
           robust scholarship search engine.
         </p>
       </div>
-
+     
       <div className="flex flex-wrap justify-items-start">
         {cardsData.map((card, index) => (
           <Card key={index} {...card} />
         ))}
       </div>
-
+      <div className="bg-tranparent mt-5 mb-5">
+        <Marquee/>
+      </div>
 
       <Footer />
     </>
