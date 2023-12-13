@@ -8,7 +8,7 @@ export default function Header() {
  
   
   return (
-    <header className='bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% fixed top-0 w-full z-10 '>
+    <header className='bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%  '>
     <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
       <Link to='/'>
       

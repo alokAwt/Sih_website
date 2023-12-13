@@ -94,7 +94,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative mt-5 pt-16">
+      <div className="relative mt-5 ">
         <Swiper {...params} className="w-full">
           <SwiperSlide>
             <img
@@ -190,22 +190,7 @@ export default function Home() {
         <div></div>
       </div>
 
-      <div className="flex flex-col items-center justify-center  w-full max-lg:xs  mt-3 text-center">
-        <h3 className="text-3xl text-purple-800 font-bold mt-5">
-          This Is What We Offer You
-        </h3>
-        <p className="text-1.6xl mb-5 mt-3">
-          Connecting scholarship seekers with scholarship providers using a
-          robust scholarship search engine.
-        </p>
-      </div>
-
-      <div className="flex flex-wrap justify-items-start">
-        {cardsData.map((card, index) => (
-          <Card key={index} {...card} />
-        ))}
-      </div>
-
+     
       <div className="grid grid-cols-2 gap-2 mt-5 mb-5" id="div1">
         <div className="container ml-5 col-md-12 col-lg-6 border-double border-2 border-sky-500 ">
           <div className="row">
@@ -337,6 +322,22 @@ export default function Home() {
               </div>
             </div>
       </div>
+      <div className="flex flex-col items-center justify-center  w-full max-lg:xs  mt-3 text-center">
+        <h3 className="text-3xl text-purple-800 font-bold mt-5">
+          This Is What We Offer You
+        </h3>
+        <p className="text-1.6xl mb-5 mt-3">
+          Connecting scholarship seekers with scholarship providers using a
+          robust scholarship search engine.
+        </p>
+      </div>
+
+      <div className="flex flex-wrap justify-items-start">
+        {cardsData.map((card, index) => (
+          <Card key={index} {...card} />
+        ))}
+      </div>
+
 
       <Footer />
     </>

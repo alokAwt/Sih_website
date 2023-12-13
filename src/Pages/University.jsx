@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function University() {
@@ -26,11 +26,16 @@ export default function University() {
             >
             
             </input>
-            
+            <Link to={'/College'}>
             <button className="bg-green-500 mt-4 text-white py-2 px-4 rounded hover:bg-red-600">
             Login
 
             </button>
+            </Link>
+          
+            
+            
+            
             
             
          </form>
