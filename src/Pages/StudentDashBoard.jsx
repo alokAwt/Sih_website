@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Footer from "../Components/Footer";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTachometerAlt, faHome, faFile, faGraduationCap, faTicketAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTachometerAlt,
+  faHome,
+  faFile,
+  faGraduationCap,
+  faTicketAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function StudentDashBoard() {
-  const [ticketTitle, setTicketTitle] = useState("");
-  const [ticketDescription, setTicketDescription] = useState("");
-
-  const handleCreateTicket = () => {
-    // Add logic to create a ticket (send to backend, etc.)
-    console.log("Ticket created:", { ticketTitle, ticketDescription });
-
-    // Reset form after creating a ticket
-    setTicketTitle("");
-    setTicketDescription("");
-  };
+  
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
@@ -56,44 +52,54 @@ export default function StudentDashBoard() {
         <div className="flex h-screen bg-gray-100">
           {/* Sidebar */}
           <div className="bg-gray-800 text-white w-64 py-6 flex-shrink-0">
-      <div className="text-2xl font-semibold text-center">
-        Student Dashboard
-      </div>
-      {/* Add sidebar links here */}
-      <ul className="mt-6">
-        
+            <div className="text-2xl font-semibold text-center">
+              Student Dashboard
+            </div>
+            {/* Add sidebar links here */}
+            <ul className="mt-6">
+              <li className="mb-4">
+                <Link
+                  to="/"
+                  className="flex items-center  p-2 rounded hover:bg-gray-700"
+                >
+                  <FontAwesomeIcon icon={faHome} className="mr-2" />
+                  Home
+                </Link>
+              </li>
 
-        <li className="mb-4">
-          <Link to="/" className="flex items-center  p-2 rounded hover:bg-gray-700">
-            <FontAwesomeIcon icon={faHome} className="mr-2" />
-            Home
-          </Link>
-        </li>
+              <li className="mb-4">
+                <Link
+                  to="#"
+                  className="flex items-center  p-2 rounded hover:bg-gray-700"
+                >
+                  <FontAwesomeIcon icon={faFile} className="mr-2" />
+                  Documents
+                </Link>
+              </li>
 
-        <li className="mb-4">
-          <Link to="#" className="flex items-center  p-2 rounded hover:bg-gray-700">
-            <FontAwesomeIcon icon={faFile} className="mr-2" />
-            Documents
-          </Link>
-        </li>
+              <li className="mb-4">
+                <Link
+                  to="/Scholarship"
+                  className="flex items-center  p-2 rounded hover:bg-gray-700"
+                >
+                  <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
+                  Scholarship
+                </Link>
+              </li>
 
-        <li className="mb-4">
-          <Link to="/Scholarship" className="flex items-center  p-2 rounded hover:bg-gray-700">
-            <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
-            Scholarship
-          </Link>
-        </li>
+              <li className="mb-4">
+                <Link 
+                  to={'/Ticket'}
+                  className="flex items-center  p-2 rounded hover:bg-gray-700"
+                >
+                  <FontAwesomeIcon icon={faTicketAlt} className="mr-2" />
+                  Ticket
+                </Link>
+              </li>
 
-        <li className="mb-4">
-          <Link to="#" className="flex items-center  p-2 rounded hover:bg-gray-700">
-            <FontAwesomeIcon icon={faTicketAlt} className="mr-2" />
-            Ticket
-          </Link>
-        </li>
-
-        {/* Add more sidebar links as needed */}
-      </ul>
-    </div>
+              {/* Add more sidebar links as needed */}
+            </ul>
+          </div>
 
           {/* Main Content Area */}
           <div className="flex-1 overflow-x-hidden overflow-y-auto">
@@ -113,10 +119,10 @@ export default function StudentDashBoard() {
               {/* Dashboard components go here */}
 
               <form>
-                <div class="grid gap-6 mb-6 md:grid-cols-2 bg-gray-800 p-4 border rounded-lg">
+                <div className="grid gap-6 mb-6 md:grid-cols-2 bg-gray-800 p-4 border rounded-lg">
                   <div>
                     <label
-                      for="first_name"
+                      htmlFor="first_name"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
                       Name
@@ -170,7 +176,7 @@ export default function StudentDashBoard() {
                       for="phonenumber"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                     PhoneNumber
+                      PhoneNumber
                     </label>
                     <input
                       type="tel"
@@ -239,7 +245,7 @@ export default function StudentDashBoard() {
                       for="logintype"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                     LoginType
+                      LoginType
                     </label>
                     <input
                       type="text"
@@ -256,7 +262,7 @@ export default function StudentDashBoard() {
                       for="application"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                    Application
+                      Application
                     </label>
                     <input
                       type="text"
@@ -273,7 +279,7 @@ export default function StudentDashBoard() {
                       for="adharcardnumber"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                    AdharCardNumber
+                      AdharCardNumber
                     </label>
                     <input
                       type="text"
@@ -290,7 +296,7 @@ export default function StudentDashBoard() {
                       for="adharcard"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                     AdharCard
+                      AdharCard
                     </label>
                     <input
                       type="text"
@@ -302,8 +308,6 @@ export default function StudentDashBoard() {
                       required
                     />
                   </div>
-                 
-                 
                 </div>
                 <div class="grid gap-6 mb-6 md:grid-cols-2 bg-gray-800 p-4 border rounded-lg">
                   <div>
@@ -345,7 +349,7 @@ export default function StudentDashBoard() {
                       for="Marksheet"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                     Marksheet
+                      Marksheet
                     </label>
                     <input
                       type="text"
@@ -377,42 +381,16 @@ export default function StudentDashBoard() {
                 </div>
               </form>
             </main>
-            <div className="p-5 mr-6 ml-6 rounded-lg shadow-lg mb-5 bg-black/40">
-              <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md mb-5 ">
-                <h2 className="text-2xl font-bold mb-4">Create a New Ticket</h2>
-                <div className="mb-4">
-                  <label className="block text-gray-600 text-sm font-semibold mb-2">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    value={ticketTitle}
-                    onChange={(e) => setTicketTitle(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-600 text-sm font-semibold mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    value={ticketDescription}
-                    onChange={(e) => setTicketDescription(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                  ></textarea>
-                </div>
-                <button
-                  onClick={handleCreateTicket}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                >
-                  Create Ticket
+            <Link to={"/Ticket"}>
+              <div className="justify-end flex bottom-0 right-0 p-4">
+                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  Raise Ticket Here
                 </button>
               </div>
-            </div>
+            </Link>
           </div>
-         
         </div>
-        
+
         <Footer />
       </>
     </div>

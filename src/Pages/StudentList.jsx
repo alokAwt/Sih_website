@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import { MdVisibility } from 'react-icons/md'; // Import the view icon from a relevant library
+import { useState } from 'react';
+import { Document, Page } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 const DocumentTable = () => {
+  const [selectedDocument, setSelectedDocument] = useState(null);
+
   const documentData = [
-    { id: 1, name: 'Income Certificate', type: 'PDF', content: 'Income Certificate content...' },
-    { id: 2, name: 'Resident Certificate', type: 'PDF', content: 'Resident Certificate content...' },
-    { id: 3, name: 'Caste Certificate', type: 'PDF', content: 'Caste Certificate content...' },
-    { id: 4, name: 'Marksheet', type: 'PDF', content: 'Marksheet content...' },
+    { id: 1, name: 'Income Certificate', type: 'PDF', pdfUrl: '/path/to/income_certificate.pdf' },
+    { id: 2, name: 'Resident Certificate', type: 'PDF', pdfUrl: '/path/to/resident_certificate.pdf' },
+    { id: 3, name: 'Caste Certificate', type: 'PDF', pdfUrl: '/path/to/caste_certificate.pdf' },
+    { id: 4, name: 'Marksheet', type: 'PDF', pdfUrl: '/path/to/marksheet.pdf' },
     // Add more documents as needed
   ];
 
-  const [selectedDocument, setSelectedDocument] = useState(null);
-
-  const handleViewClick = (document) => {
-    setSelectedDocument(document);
+  const openPdf = (pdfUrl) => {
+    setSelectedDocument(pdfUrl);
   };
+
+  const closePdf = () => {
+    setSelectedDocument(null);
+  };
+
 
   return (
     <div className="container mx-auto mt-8">
@@ -32,12 +38,7 @@ const DocumentTable = () => {
               <td className="py-2 px-4 border-b">{document.name}</td>
               <td className="py-2 px-4 border-b">{document.type}</td>
               <td className="py-2 px-4 border-b">
-                <button
-                  className="text-blue-500"
-                  onClick={() => handleViewClick(document)}
-                >
-                  <MdVisibility />
-                </button>
+                <button onClick={() => openPdf(document.pdfUrl)}>View</button>
               </td>
             </tr>
           ))}
@@ -45,17 +46,13 @@ const DocumentTable = () => {
       </table>
 
       {selectedDocument && (
-        <div className="mt-4">
-          <h2 className="text-xl font-bold mb-2">
-            Viewing: {selectedDocument.name}
-          </h2>
-          {/* Render the document view or details here */}
-          <p>Type: {selectedDocument.type}</p>
-          <div>
-            <p>Content:</p>
-            <pre>{selectedDocument.content}</pre>
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex items-center justify-center">
+          <div className="bg-white p-4 rounded-lg">
+            <button onClick={closePdf}>Close</button>
+            <Document file={selectedDocument} onLoadSuccess={closePdf}>
+              <Page pageNumber={1} />
+            </Document>
           </div>
-          {/* Add more details as needed */}
         </div>
       )}
     </div>

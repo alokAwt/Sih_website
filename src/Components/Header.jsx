@@ -15,8 +15,9 @@ export default function Header() {
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
         <Link to='/'>
           <h1 className='font-bold text-sm sm:text-2xl flex flex-wrap'>
-            <span className='text-slate-200 font-mono'>Vita</span>
+             <span className='text-slate-200 font-mono'>Vita</span>
             <span className='text-yellow-500 font-serif'>ran</span>
+           
           </h1>
         </Link>
         <form className='bg-slate-100 p-2.5 rounded-lg flex items-center'>
@@ -25,7 +26,8 @@ export default function Header() {
         </form>
         <ul className='flex gap-4 ml-10'>
           <Link to='/'>
-            <li className='hidden sm:inline text-slate-200 hover:underline'>Home</li>
+            <li className='hidden sm:inline text-slate-200 hover:underline'>
+              <a href="#div3">Home</a></li>
           </Link>
           <li className='hidden sm:inline text-slate-200 hover:underline'>
             <a href="#div2">FAQ</a></li>

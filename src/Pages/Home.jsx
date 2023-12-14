@@ -19,7 +19,7 @@ export default function Home() {
     return (
       <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-4  justify-center transition-transform transform-gpu hover:scale-110 ">
         <div
-          className="bg-cover bg-center rounded-lg h-64"
+          className="bg-cover bg-center rounded-lg h-64 "
           style={{ backgroundImage: `url(${image})` }}
         ></div>
         <div className="mt-4">
@@ -92,8 +92,8 @@ export default function Home() {
   return (
     <>
    <div className="bg-gray-900 h-[500px]
-    rounded-b-[100px] relative overflow-hidden shadow-lg">
-  <div className="flex flex-col justify-center z-10 relative">
+    rounded-b-[100px] relative overflow-hidden shadow-lg" >
+  <div className="flex flex-col justify-center z-10 relative" id="div3">
     {/* Content */}
     <h1 className="text-3xl text-slate-100 text-center mt-10 font-mono font-bold">
       Discover.Learn.
@@ -116,7 +116,7 @@ export default function Home() {
   <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
     <div className="bg-gradient-to-r from-yellow-500 to-transparent p-12 w-full h-full opacity-0 hover:opacity-90 
     transition-opacity duration-300">
-      <h1 className="text-2xl text-white font-mono font-semibold mb-4">Welcome To Vitaran</h1>
+      <h1 className="text-2xl text-white font-serif font-bold mb-4">Welcome To Vitaran</h1>
       
       {/* Additional card elements go here */}
     </div>
@@ -125,35 +125,45 @@ export default function Home() {
 
       <div className="relative mt-5 ">
         <Swiper {...params} className="w-full">
-          <SwiperSlide>
-            <img
-              src="https://scholarships.gov.in/public/Content/img/slider3.jpg"
-              alt="Alternate Text 1"
-            />
-          </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://scholarships.gov.in/public/Content/img/slider3.jpg"
+            alt="Alternate Text 1"
+            className="w-full h-auto transform scale-100 transition-transform duration-500 hover:scale-110"
+          />
+        </SwiperSlide>
 
-          <SwiperSlide>
-            <img
-              src="https://scholarships.gov.in/public/Content/img/slider14.jpg"
-              alt="Alternate Text 2"
-            />
-          </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://scholarships.gov.in/public/Content/img/slider14.jpg"
+            alt="Alternate Text 2"
+            className="w-full h-auto transform scale-100 transition-transform duration-500 hover:scale-110"
+          />
+        </SwiperSlide>
 
-          <SwiperSlide>
-            <img
-              src="https://scholarships.gov.in/public/Content/img/slider4.jpg"
-              alt="Alternate Text 3"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://scholarships.gov.in/public/Content/img/slider1.jpg"
-              alt="Alternate Text 3"
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src={slider5} alt="Alternate Text 3" />
-          </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://scholarships.gov.in/public/Content/img/slider4.jpg"
+            alt="Alternate Text 3"
+            className="w-full h-auto transform scale-100 transition-transform duration-500 hover:scale-110"
+          />
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src="https://scholarships.gov.in/public/Content/img/slider1.jpg"
+            alt="Alternate Text 3"
+            className="w-full h-auto transform scale-100 transition-transform duration-500 hover:scale-110"
+          />
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <img
+            src={slider5}
+            alt="Alternate Text 3"
+            className="w-full h-auto transform scale-100 transition-transform duration-500 hover:scale-110"
+          />
+        </SwiperSlide>
         </Swiper>
 
         {/* Navigation Buttons */}

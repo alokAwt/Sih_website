@@ -17,6 +17,7 @@ import Loginopt from "./Pages/Loginopt";
 import College from "./Pages/College";
 import StudentList from "./Pages/StudentList";
 import Detail from "./Pages/Detail";
+import Ticket from "./Pages/Ticket";
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ export default function App() {
           <Route path="/Loginopt" element={<Loginopt />} />
           <Route path="/Detail" element={<Detail/>}></Route>
           <Route path="/StudentList" element={<StudentList/>}/>
+          <Route path="/Ticket" element={<Ticket />}/>
         </Routes>
       </BrowserRouter>
     </>

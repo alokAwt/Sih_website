@@ -79,17 +79,7 @@ const SampleTable = () => {
 };
 
 const StudentDashBoard = () => {
-  const [ticketTitle, setTicketTitle] = useState("");
-  const [ticketDescription, setTicketDescription] = useState("");
-
-  const handleCreateTicket = () => {
-    // Add logic to create a ticket (send to backend, etc.)
-    console.log("Ticket created:", { ticketTitle, ticketDescription });
-
-    // Reset form after creating a ticket
-    setTicketTitle("");
-    setTicketDescription("");
-  };
+  
 
   const cardsData = [
     { id: 1, color: "bg-blue-500 ", title: " Student applied", content: "57" },
@@ -193,40 +183,18 @@ const StudentDashBoard = () => {
             <div className="mt-5 mr-5 ml-5 p-5">
               <SampleTable />
             </div>
-            <div className="p-5 mr-6 ml-6 rounded-lg shadow-lg mb-5 bg-black/40">
-              <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md mb-5 ">
-                <h2 className="text-2xl font-bold mb-4">Create a New Ticket</h2>
-                <div className="mb-4">
-                  <label className="block text-gray-600 text-sm font-semibold mb-2">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    value={ticketTitle}
-                    onChange={(e) => setTicketTitle(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                  />
-                </div>
-                <div className="mb-4">
-                  <label className="block text-gray-600 text-sm font-semibold mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    value={ticketDescription}
-                    onChange={(e) => setTicketDescription(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded-md"
-                  ></textarea>
-                </div>
-                <button
-                  onClick={handleCreateTicket}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                >
-                  Create Ticket
-                </button>
-              </div>
-            </div>
+            <Link to={'/Ticket'}>
+            <div className="flex justify-end bottom-0 right-0 p-4">
+      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Raise Ticket
+      </button>
+    </div>
+            </Link>
+            
           </div>
+          
         </div>
+       
 
         <Footer />
       </div>
