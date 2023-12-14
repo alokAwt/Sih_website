@@ -77,20 +77,16 @@ export default function Student() {
                 >
                   Send OTP
                 </button>
-              
               </div>
 
               <Link to={"/LoginWithDigi"}>
-              <button
+                <button
                   type="submit"
                   className="bg-red-500 text-white p-2 rounded-md hover:bg-blue-600 mb-3 w-full"
                 >
                   With DigiLocker
                 </button>
-                
-                </Link>
-                
-              
+              </Link>
             </form>
           </div>
         </div>

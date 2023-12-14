@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 export default function Header() {
+  
+
+ 
   // Assume isLoggedIn state is managed in your application
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
-    <header className='bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90%'>
+    <header className=' sticky top-0 z-50 bg-gray-900 '>
+
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
         <Link to='/'>
           <h1 className='font-bold text-sm sm:text-2xl flex flex-wrap'>
@@ -23,7 +27,8 @@ export default function Header() {
           <Link to='/'>
             <li className='hidden sm:inline text-slate-200 hover:underline'>Home</li>
           </Link>
-          <li className='hidden sm:inline text-slate-200 hover:underline'>FAQ</li>
+          <li className='hidden sm:inline text-slate-200 hover:underline'>
+            <a href="#div2">FAQ</a></li>
           <li className='text-slate-200 hover:underline'>
             <a href="#div1">Notification</a>
           </li>

@@ -91,6 +91,38 @@ export default function Home() {
 
   return (
     <>
+   <div className="bg-gray-900 h-[500px]
+    rounded-b-[100px] relative overflow-hidden shadow-lg">
+  <div className="flex flex-col justify-center z-10 relative">
+    {/* Content */}
+    <h1 className="text-3xl text-slate-100 text-center mt-10 font-mono font-bold">
+      Discover.Learn.
+    </h1>
+    <p className="text-center text-voilet-800 mt-3 text-xl font-serif text-slate-200">
+      Making Scholarship Process easy..
+    </p>
+  </div>
+
+  {/* First Card */}
+  <div className="bg-white p-8 rounded-lg shadow-lg max-w-md mx-auto mt-8 hover:scale-105 z-20 relative">
+    <h1 className="text-3xl text-slate-700 font-mono font-bold mb-4">Scholarship</h1>
+    <p className="text-slate-600 text-xl font-serif mb-6">
+      Empowering Dreams, Igniting Futures: Bridging Ambitions with Scholarships
+    </p>
+    {/* Additional card elements go here */}
+  </div>
+
+  {/* Second Card */}
+  <div className="absolute top-0 right-0 bottom-0 left-0 flex items-center justify-center">
+    <div className="bg-gradient-to-r from-yellow-500 to-transparent p-12 w-full h-full opacity-0 hover:opacity-90 
+    transition-opacity duration-300">
+      <h1 className="text-2xl text-white font-mono font-semibold mb-4">Welcome To Vitaran</h1>
+      
+      {/* Additional card elements go here */}
+    </div>
+  </div>
+</div>
+
       <div className="relative mt-5 ">
         <Swiper {...params} className="w-full">
           <SwiperSlide>
@@ -337,6 +369,68 @@ export default function Home() {
       <div className="bg-tranparent mt-5 mb-5">
         <Marquee/>
       </div>
+      <section class="py-10 bg-gray-900 sm:py-16 lg:py-24 "id="div2">
+    <div class="max-w-5xl px-4 mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">Questions & Answers</h2>
+            <p class="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-300">Explore the common questions and answers about Vitaran</p>
+        </div>
+
+        <div class="grid grid-cols-1 mt-12 md:mt-20 md:grid-cols-2 gap-y-16 gap-x-20">
+            <div class="flex items-start">
+                <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full">
+                    <span class="text-lg font-semibold text-white">?</span>
+                </div>
+                <div class="ml-4">
+                    <p class="text-xl font-semibold text-white"> Is Your Website Secure?</p>
+                    <p class="mt-4 text-base text-gray-400">Yes, We Prioritize The Security Of Our Users' Information. Our Website Is Equipped With Industry-Standard Security Measures To Protect Your Data And Ensure A Safe Browsing Experience.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start">
+                <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full">
+                    <span class="text-lg font-semibold text-white">?</span>
+                </div>
+                <div class="ml-4">
+                    <p class="text-xl font-semibold text-white"> I Am Unable To Login. What Should I Do?</p>
+                    <p class="mt-4 text-base text-gray-400">If You Are Experiencing Login Issues, Please Ensure That You Are Entering The Correct Adharcard Number or Digilocker.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start">
+                <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full">
+                    <span class="text-lg font-semibold text-white">?</span>
+                </div>
+                <div class="ml-4">
+                    <p class="text-xl font-semibold text-white">Are There Any Benefits To Using Your Product/Having An Account With You?</p>
+                    <p class="mt-4 text-base text-gray-400">By Using "The Global Scholarship," You Gain Access To Tailored Scholarship Opportunities, Saving Time In Searching For Scholarships. You Receive Personalized Notifications, Guidance, And Support Throughout Your Scholarship Journey, Maximizing Your Chances Of Securing Funding For Your Education.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start">
+                <div class="flex items-center justify-center flex-shrink-0 w-8 h-8 bg-gray-700 rounded-full">
+                    <span class="text-lg font-semibold text-white">?</span>
+                </div>
+                <div class="ml-4">
+                    <p class="text-xl font-semibold text-white">Is This Scholarship Eligible For Me?</p>
+                    <p class="mt-4 text-base text-gray-400">Before Applying For Any Scholarship, It Is Important To Check The Eligibility Criteria Mentioned In The Scholarship Details To Determine Your Eligibility..</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center mt-12 md:mt-20">
+            <div class="px-8 py-4 text-center bg-gray-800 rounded-full">
+                <p class="text-gray-50">Didn’t find the answer you are looking for? <a href="#" title="" class="text-yellow-300 transition-all duration-200 hover:text-yellow-400 focus:text-yellow-400 hover:underline">Contact our support</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            
+            
+        
+    
 
       <Footer />
     </>
