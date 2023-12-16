@@ -10,7 +10,8 @@ import {
   faTicketAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function StudentDashBoard() {
+export default function Myapplication() {
+  let token = localStorage.getItem("token");
   const [name, setName] = useState("");
   const [AdharCardNumber, setAdharCardNumber] = useState("");
   const [city, setCity] = useState("");
@@ -22,7 +23,6 @@ export default function StudentDashBoard() {
   const [logintype, setLogintype] = useState("");
   const [doc, setDoc] = useState([]);
   const StudentDetails = async () => {
-    let token = localStorage.getItem("token");
     let data = await fetch(
       `https://sih-backend-ivory.vercel.app/api/v1/Users/ownProfile`,
       {
@@ -34,19 +34,20 @@ export default function StudentDashBoard() {
       }
     );
     data = await data.json();
-    console.log(data.data);
-    if (data) {
-      setDoc(data.data);
-      setName(data.data.Name);
-      setEmail(data.data.Email);
-      setPhoneNumber(data.data.PhoneNumber);
-      setCity(data.data.City);
-      setdistict(data.data.distict);
-      setState(data.data.State);
-      setLandmark(data.data.Landmark);
-      setAdharCardNumber(data.data.AdharCardNumber);
-      setLogintype(data.data.LoginType);
-    }
+    setDoc(data.data.Application[0]);
+    console.log("alo", data.data.Application[0]);
+    // if (data) {
+
+    //   setName(data.data.Name);
+    //   setEmail(data.data.Email);
+    //   setPhoneNumber(data.data.PhoneNumber);
+    //   setCity(data.data.City);
+    //   setdistict(data.data.distict);
+    //   setState(data.data.State);
+    //   setLandmark(data.data.Landmark);
+    //   setAdharCardNumber(data.data.AdharCardNumber);
+    //   setLogintype(data.data.LoginType);
+    // }
   };
 
   useEffect(() => {
@@ -137,7 +138,13 @@ export default function StudentDashBoard() {
             {/* Header */}
             <header className="bg-white shadow-md p-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold">Welcome Student!</h2>
+                <h2
+                  className="text-xl font-semibold"
+                  style={{ fontSize: 30, fontWeight: "bold", color: "red" }}
+                >
+                  {" "}
+                  Status = {doc.Status}
+                </h2>
                 {/* <button className="bg-red-500 text-slate-200 font-semibold hover:text-white py-2 px-4 border border-yellow-500 hover:border-transparent rounded ">
                   Logout
                 </button> */}
@@ -162,7 +169,7 @@ export default function StudentDashBoard() {
                       id="name"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="name"
-                      value={name}
+                      value={doc.StudentName}
                       required
                     />
                   </div>
@@ -195,7 +202,7 @@ export default function StudentDashBoard() {
                       id="company"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Email"
-                      value={email}
+                      value={doc.Email}
                       // onChange={(e) => setFormData(e.target.value)}
                       required
                     />
@@ -213,7 +220,7 @@ export default function StudentDashBoard() {
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="6261677514"
                       pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-                      value={PhoneNumber}
+                      value={doc.Phonenumber}
                       // onChange={(e) => setFormData(e.target.value)}
                       required
                     />
@@ -223,14 +230,14 @@ export default function StudentDashBoard() {
                       for="city"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      City
+                      District
                     </label>
                     <input
                       type="text"
                       id="state"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="City"
-                      value={city}
+                      value={doc.District}
                       // onChange={(e) => setFormData(e.target.value)}
                       required
                     />
@@ -240,14 +247,14 @@ export default function StudentDashBoard() {
                       for="District"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      District
+                      State
                     </label>
                     <input
                       type="text"
                       id="visitors"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="District"
-                      value={distict}
+                      value={doc.State}
                       onChange={(e) => setFormData(e.target.value)}
                       required
                     />
@@ -257,14 +264,14 @@ export default function StudentDashBoard() {
                       for="landmark"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Landmark
+                      Address
                     </label>
                     <input
                       type="text"
                       id="visitors"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Landmark"
-                      value={Landmark}
+                      value={doc.Address}
                       // onChange={(e) => setFormData(e.target.value)}
                       required
                     />
@@ -286,24 +293,8 @@ export default function StudentDashBoard() {
                       required
                     />
                   </div> */}
-                  <div>
-                    <label
-                      for="application"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Total Application
-                    </label>
-                    <input
-                      type="text"
-                      id="visitors"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Total Application"
-                      value="0"
-                      onChange={(e) => setFormData(e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
+
+                  {/* <div>
                     <label
                       for="adharcardnumber"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -315,11 +306,11 @@ export default function StudentDashBoard() {
                       id="visitors"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Adhar Number"
-                      value={AdharCardNumber}
+                      value={doc[0]}
                       onChange={(e) => setFormData(e.target.value)}
                       required
                     />
-                  </div>
+                  </div> */}
                   {/* <div>
                     <label
                       for="adharcard"
@@ -338,78 +329,94 @@ export default function StudentDashBoard() {
                     />
                   </div> */}
                 </div>
-                {logintype === "Adharcard" ? null : (
-                  <div class="grid gap-6 mb-6 md:grid-cols-2 bg-gray-800 p-4 border rounded-lg">
-                    <div>
-                      <label
-                        for="CasteCertificate"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        CasteCertificate
-                      </label>
-                      <input
-                        type="text"
-                        id="visitors"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="IIT Delhi"
-                        value={doc.CasteCertificate}
-                        onChange={(e) => setFormData(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label
-                        for="IncomeCertificate"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        IncomeCertificate
-                      </label>
-                      <input
-                        type="text"
-                        id="visitors"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="IIT Delhi"
-                        value={doc.IncomeCertificate}
-                        onChange={(e) => setFormData(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label
-                        for="Marksheet"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        Marksheet
-                      </label>
-                      <input
-                        type="text"
-                        id="visitors"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="IIT Delhi"
-                        value={doc.Marksheet}
-                        onChange={(e) => setFormData(e.target.value)}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label
-                        for="RecidentCertificate"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >
-                        RecidentCertificate
-                      </label>
-                      <input
-                        type="text"
-                        id="visitors"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="B.Tech"
-                        value={doc.RecidentCertificate}
-                        onChange={(e) => setFormData(e.target.value)}
-                        required
-                      />
-                    </div>
+
+                <div class="grid gap-6 mb-6 md:grid-cols-2 bg-gray-800 p-4 border rounded-lg">
+                  <div>
+                    <label
+                      for="CasteCertificate"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      CasteCertificate
+                    </label>
+                    <input
+                      type="text"
+                      id="visitors"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="IIT Delhi"
+                      value={doc.CasteCertificate}
+                      onChange={(e) => setFormData(e.target.value)}
+                      required
+                    />
                   </div>
-                )}
+                  <div>
+                    <label
+                      for="IncomeCertificate"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      IncomeCertificate
+                    </label>
+                    <input
+                      type="text"
+                      id="visitors"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="IIT Delhi"
+                      value={doc.IncomeCertificate}
+                      onChange={(e) => setFormData(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="Marksheet"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Marksheet
+                    </label>
+                    <input
+                      type="text"
+                      id="visitors"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="IIT Delhi"
+                      onChange={(e) => setFormData(e.target.value)}
+                      value={doc.Marksheet}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="RecidentCertificate"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      RecidentCertificate
+                    </label>
+                    <input
+                      type="text"
+                      id="visitors"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="B.Tech"
+                      value={doc.RecidentCertificate}
+                      onChange={(e) => setFormData(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label
+                      for="Marksheet"
+                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Bonafite
+                    </label>
+                    <input
+                      type="text"
+                      id="visitors"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="IIT Delhi"
+                      value={doc.Bonafite}
+                      onChange={(e) => setFormData(e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
               </form>
             </main>
             <Link to={"/Ticket"}>

@@ -8,6 +8,7 @@ export default function Otp() {
   const handleLogin = async () => {
     try {
       let incomes = localStorage.getItem("otp");
+      let Adhar = localStorage.getItem("adhar");
 
       if (!password.trim()) {
         alert("Please enter the OTP."); // Show an alert or handle the error appropriately
@@ -19,7 +20,7 @@ export default function Otp() {
           `https://sih-backend-ivory.vercel.app/api/v1/Users/Adhar/Login`,
           {
             method: "POST",
-            body: JSON.stringify({ AdharNumber: "123356789123" }),
+            body: JSON.stringify({ AdharNumber: Adhar }),
             headers: {
               "Content-Type": "application/json",
             },
@@ -27,11 +28,14 @@ export default function Otp() {
         );
 
         res = await res.json();
-        console.log(res);
-        localStorage.setItem("token", res.token);
+        if (res) {
+          localStorage.setItem("token", res.token);
+          navigate("/StudentDashBoard");
+        }
+        console.log(res.token)
 
         // Redirect to StudentDashBoard if the login is successful
-        navigate("/StudentDashBoard");
+       
       } else {
         alert("Invalid OTP. Please enter the correct OTP.");
       }

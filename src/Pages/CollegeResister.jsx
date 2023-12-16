@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 
-export default function University() {
+export default function CollegeResister() {
   const [otp, setOtp] = useState(false);
   const [Email, setEmail] = useState("");
   const [collegeName, setCollegeName] = useState("");
@@ -14,13 +13,10 @@ export default function University() {
   const [incomeOtp, setIncomeOtp] = useState("");
   const [currentOtp, setCurrentOtp] = useState("");
 
-  const navigate = useNavigate();
-
-  const SendOtp = async (e) => {
-    e.preventDefault();
-    console.log(ConformPasswords, Password, Email);
+  const SendOtp = async () => {
+    console.log("aloks")
     if (ConformPasswords === Password) {
-      let otp1 = await fetch(
+      let otp = await fetch(
         `https://sih-backend-ivory.vercel.app/api/v1/College/OtpSend`,
         {
           method: "POST",
@@ -32,108 +28,39 @@ export default function University() {
           },
         }
       );
-      otp1 = await otp1.json();
-      console.log(otp1);
-      if (otp1.staus === "success") {
-        setIncomeOtp(otp1.otp);
-        localStorage.setItem("otp", otp1.otp);
-
+      otp = await otp.json();
+      console.log(otp);
+      if (otp.otp) {
+        setIncomeOtp(otp.otp);
         setOtp(true);
-      } else {
-        alert(otp1.message);
       }
-    } else {
-      alert("password not matched");
     }
 
     console.log(otp);
   };
 
-  const SignUp = async (e) => {
-    e.preventDefault();
-    console.log("aloks");
-    let incoming = localStorage.getItem("otp");
-    console.log(incomeOtp, currentOtp);
-    if (incoming === currentOtp) {
-      let res = await fetch(
-        `https://sih-backend-ivory.vercel.app/api/v1/College/Signup`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            Email: Email,
-            PhoneNumber: Phone,
-            City: City,
-            distict: District,
-            State: State,
-            Password: Password,
-            Landmark: "LOcal",
-            CollgeName: collegeName,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      res = await res.json();
-      console.log("alok", res);
-      if (res.status === "success") {
-        navigate("/college/Login");
-      }
+  // const SignUp = async () => {
+  //   if (incomeOtp === currentOtp) {
+  //     let res = await fetch(
+  //       `https://sih-backend-ivory.vercel.app/api/v1/College/OtpSend`,
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify({
+  //           Email: Email,
+  //         }),
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     res = await res.json();
+  //   }
 
-      console.log(res);
-    }
-  };
+  //   console.log(res);
+  // };
   return (
     <>
-      {otp ? (
-        <>
-          <div
-            className="min-h-screen flex items-center justify-center bg-cover"
-            style={{
-              backgroundImage:
-                'url(" https://img.freepik.com/free-vector/college-students-concept-illustration_114360-10205.jpg?w=996&t=st=1702288022~exp=1702288622~hmac=b102a5dbfa26a384e52393eee41874ad7a353ca3aaf3596c00c3c4b1d7d089de',
-            }}
-          >
-            <div
-              className="bg-white p-8 rounded-lg shadow-md "
-              style={{ width: 350 }}
-            >
-              <h2 className="text-2xl font-bold font-mono mb-4 text-blue-600">
-                Otp Send SuccessFully
-              </h2>
-              <form>
-                <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
-                >
-                  <div>
-                    <label
-                      className="block text-gray-700 text-sm font-bold mb-2"
-                      htmlFor="email"
-                    >
-                      Enter Otp
-                    </label>
-                    <input
-                      className="border rounded w-full py-2 px-3"
-                      type="text"
-                      placeholder="Enter Otp"
-                      style={{ width: 250 }}
-                      value={currentOtp}
-                      onChange={(e) => setCurrentOtp(e.target.value)}
-                    ></input>
-                  </div>
-                </div>
-
-                <button
-                  onClick={(e) => SignUp(e)}
-                  className="bg-green-500 mt-4 text-white py-2 px-4 rounded hover:bg-red-600"
-                >
-                  Login
-                </button>
-              </form>
-            </div>
-          </div>
-        </>
-      ) : (
+      
         <div
           className="min-h-screen flex items-center justify-center bg-cover"
           style={{
@@ -282,33 +209,21 @@ export default function University() {
                     placeholder="Enter Conform Password"
                     style={{ width: 250 }}
                     value={ConformPasswords}
-                    onChange={(e) => setConformPasswords(e.target.value)}
+                    onChange={(e) => setConformPasswords(e.target.target)}
                   ></input>
                 </div>
               </div>
 
               <button
-                onClick={(e) => SendOtp(e)}
+               onClick={SendOtp}
                 className="bg-green-500 mt-4 text-white py-2 px-4 rounded hover:bg-red-600"
               >
-                Proceed to Resitration
-              </button>
-              <button
-                onClick={() => navigate("/college/Login/aciee")}
-                className="bg-green-500 mt-4 ml-4 text-white py-2 px-4 rounded hover:bg-red-600"
-              >
-                Login With Acice Code
-              </button>
-              <button
-                onClick={() => navigate("/college/Login")}
-                className="bg-green-500 mt-4 ml-0 text-white py-2 px-4 rounded hover:bg-red-600"
-              >
-                Already Have account
+                Proceed
               </button>
             </form>
           </div>
         </div>
-      )}
+     
     </>
   );
 }

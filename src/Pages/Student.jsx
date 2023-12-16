@@ -1,5 +1,7 @@
 import React, { useState } from "react"; //login with adharcar number.
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Student() {
   const [AdharNumber, setAadharNumber] = useState("");
@@ -26,15 +28,23 @@ export default function Student() {
     );
 
     const data = await res.json();
-    localStorage.setItem("otp", data.otp);
+    if (data.staus === "success") {
+      toast("Otp send success");
+      localStorage.setItem("otp", data.otp);
+      localStorage.setItem("adhar", AdharNumber);
+      navigate("/otp");
+    } else {
+      toast("Failed to  send! try after some time");
+    }
+
     console.log(data);
 
     // Navigate to Otp page only if AdharNumber is not empty
-    navigate("/Otp");
   };
 
   return (
     <div className="min-h-screen py-40">
+      <ToastContainer></ToastContainer>
       <div className="container mx-auto">
         <div className="flex w-8/12 bg-white rounded-xl mx-auto shadow-lg overflow-hidden">
           <div className="w-1/2 hidden md:block">

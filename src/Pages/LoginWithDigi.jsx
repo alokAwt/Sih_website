@@ -1,12 +1,12 @@
-import React from 'react' // Login with digilocker
+import React from "react"; // Login with digilocker
 import { useState } from "react";
 
-import {  useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginWithDigi() {
   const [AdharNumber, setAadharNumber] = useState("");
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents the form from submitting
 
@@ -28,10 +28,8 @@ export default function LoginWithDigi() {
     );
 
     const data2 = await result.json();
-    localStorage.setItem("otpdigi", data2.otp);
-    console.log(data2);
-
-    
+    localStorage.setItem("otp", data2.otp);
+    localStorage.setItem("adhar", AdharNumber);
     navigate("/Loginopt");
   };
   return (
@@ -70,7 +68,7 @@ export default function LoginWithDigi() {
                   onChange={(e) => setAadharNumber(e.target.value)}
                   required
                 />
-                
+
                 <button
                   onClick={handleSubmit}
                   type="submit"
@@ -79,7 +77,6 @@ export default function LoginWithDigi() {
                 >
                   Send OTP
                 </button>
-                
               </div>
             </form>
           </div>
